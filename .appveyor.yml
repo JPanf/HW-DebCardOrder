@@ -12,8 +12,7 @@ install:
   # запускаем SUT (& означает, что в фоновом режиме не блокируем терминал для запуска тестов)
   - java -jar ./artifacts/app-order.jar &
 
-  -
 build_script:
- -./gradlew test --info  # запускаем тест, флаг --info позволяет выводить больше информации
- -chmod +x gradlew
+  - chmod +x gradlew
+  - ./gradlew test --info
 
