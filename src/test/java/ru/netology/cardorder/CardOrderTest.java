@@ -27,7 +27,7 @@ class CardOrderTest {
     @BeforeEach
     void OpenURLBeforeEveryTest() {
         open("http://localhost:9999");
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
     }
 
     @Test
