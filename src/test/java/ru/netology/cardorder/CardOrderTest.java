@@ -27,12 +27,9 @@ class CardOrderTest {
     @BeforeEach
     void OpenURLBeforeEveryTest() {
         open("http://localhost:9999");
-        //Configuration.holdBrowserOpen = true;
     }
-
     @Test
     void shouldReturnSuccessMessageIfAllCorrect() {
-
         $("[data-test-id=name] input").setValue("Василий");
         $("[data-test-id=phone] input").setValue("+79270000000");
         $("[data-test-id=agreement]").click();
@@ -79,6 +76,6 @@ class CardOrderTest {
         $("[data-test-id='name'] input").setValue("Иван Иванов");
         $("[data-test-id=phone] input").setValue("+79270000000");
         $("button").click();
-        $("[data-test-id='agreement']").shouldNot(Condition.attribute("input_invalid"));
+        $("[data-test-id='agreement']").should(Condition.attribute("input_invalid"));
     }
 }
