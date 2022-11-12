@@ -2,31 +2,19 @@ package ru.netology.cardorder;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.util.List;
-import java.util.Set;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static org.asynchttpclient.util.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CardOrderTest {
 
     @BeforeEach
     void OpenURLBeforeEveryTest() {
         open("http://localhost:9999");
+        Configuration.holdBrowserOpen=true;
     }
     @Test
     void shouldReturnSuccessMessageIfAllCorrect() {
