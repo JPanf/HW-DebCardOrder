@@ -1,18 +1,17 @@
 package ru.netology.cardorder;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 class CardOrderTest {
 
     @BeforeEach
-    void OpenURLBeforeEveryTest() {
+    void openURLBeforeEveryTest() {
         open("http://localhost:9999");
         Configuration.holdBrowserOpen=true;
     }
@@ -64,6 +63,6 @@ class CardOrderTest {
         $("[data-test-id='name'] input").setValue("Иван Иванов");
         $("[data-test-id=phone] input").setValue("+79270000000");
         $("button").click();
-        $("[data-test-id='agreement']").shouldNot(Condition.attribute("input_invalid"));
+        $x("//*[text()='Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй']").shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
     }
 }
