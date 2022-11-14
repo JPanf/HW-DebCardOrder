@@ -4,8 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.cssValue;
-import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 class CardOrderTest {
@@ -59,10 +58,10 @@ class CardOrderTest {
     }
 
     @Test
-    void shouldNotSubmitIfIfCheckBoxNotClicked() {
+    void shouldNotSubmitIfCheckBoxNotClicked() {
         $("[data-test-id='name'] input").setValue("Иван Иванов");
         $("[data-test-id=phone] input").setValue("+79270000000");
         $("button").click();
-        $x("//*[text()='Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй']").shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
+        $("[data-test-id=agreement].input_invalid").should(exist);
     }
 }
